@@ -56,7 +56,7 @@ Each student has multiple subject records.
 
 ## 🎥 Video Demo
 📽 **Project Walkthrough Video:**  
-[Click here to watch the demo]([https://your-video-link-here](https://github.com/palak022/PerformEdge/blob/main/Screen%20Recording%202026-01-08%20143726.mp4))
+[Click here to watch the demo]((https://github.com/palak022/PerformEdge/blob/main/Screen%20Recording%202026-01-08%20143726.mp4))
 
 ---
 
