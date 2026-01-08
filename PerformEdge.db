@@ -1,0 +1,91 @@
+-- Create database
+CREATE DATABASE IF NOT EXISTS PerformEdge;
+USE PerformEdge;
+
+-- Students table
+CREATE TABLE students (
+    student_id INT PRIMARY KEY,
+    name VARCHAR(50),
+    dept VARCHAR(50),
+    year INT
+);
+
+-- Subjects table
+CREATE TABLE subjects (
+    subject_id INT PRIMARY KEY,
+    subject_name VARCHAR(50)
+);
+
+-- Marks table
+CREATE TABLE marks (
+    student_id INT,
+    subject_id INT,
+    marks INT,
+    PRIMARY KEY (student_id, subject_id),
+    FOREIGN KEY (student_id) REFERENCES students(student_id),
+    FOREIGN KEY (subject_id) REFERENCES subjects(subject_id)
+);
+
+-- Attendance table
+CREATE TABLE attendance (
+    student_id INT,
+    subject_id INT,
+    days_present INT,
+    days_total INT,
+    PRIMARY KEY (student_id, subject_id),
+    FOREIGN KEY (student_id) REFERENCES students(student_id),
+    FOREIGN KEY (subject_id) REFERENCES subjects(subject_id)
+);
+
+INSERT INTO students (student_id, name, dept, year) VALUES
+(1,'Student1','CSE',1),(2,'Student2','IT',1),(3,'Student3','IoT',1),
+(4,'Student4','CSE',2),(5,'Student5','IT',2),(6,'Student6','IoT',2),
+(7,'Student7','CSE',3),(8,'Student8','IT',3),(9,'Student9','IoT',3),
+(10,'Student10','CSE',4),(11,'Student11','IT',4),(12,'Student12','IoT',4),
+(13,'Student13','CSE',1),(14,'Student14','IT',1),(15,'Student15','IoT',1),
+(16,'Student16','CSE',2),(17,'Student17','IT',2),(18,'Student18','IoT',2),
+(19,'Student19','CSE',3),(20,'Student20','IT',3),(21,'Student21','IoT',3),
+(22,'Student22','CSE',4),(23,'Student23','IT',4),(24,'Student24','IoT',4),
+(25,'Student25','CSE',1),(26,'Student26','IT',1),(27,'Student27','IoT',1),
+(28,'Student28','CSE',2),(29,'Student29','IT',2),(30,'Student30','IoT',2),
+(31,'Student31','CSE',3),(32,'Student32','IT',3),(33,'Student33','IoT',3),
+(34,'Student34','CSE',4),(35,'Student35','IT',4),(36,'Student36','IoT',4),
+(37,'Student37','CSE',1),(38,'Student38','IT',1),(39,'Student39','IoT',1),
+(40,'Student40','CSE',2),(41,'Student41','IT',2),(42,'Student42','IoT',2),
+(43,'Student43','CSE',3),(44,'Student44','IT',3),(45,'Student45','IoT',3),
+(46,'Student46','CSE',4),(47,'Student47','IT',4),(48,'Student48','IoT',4),
+(49,'Student49','CSE',1),(50,'Student50','IT',1),(51,'Student51','IoT',2),
+(52,'Student52','CSE',3),(53,'Student53','IT',4),(54,'Student54','IoT',2),
+(55,'Student55','CSE',3);
+
+INSERT INTO subjects (subject_id, subject_name) VALUES
+(101,'Mathematics'),
+(102,'Physics'),
+(103,'English'),
+(104,'Computer Science');
+
+-- 55 students x 4 subjects = 220 records
+INSERT INTO marks (student_id, subject_id, marks)
+SELECT s.student_id, sub.subject_id,
+       FLOOR(30 + RAND()*70)
+FROM students s
+CROSS JOIN subjects sub;
+
+-- 55 students x 4 subjects = 220 records
+INSERT INTO attendance (student_id, subject_id, days_present, days_total)
+SELECT s.student_id, sub.subject_id,
+       FLOOR(25 + RAND()*25), 50
+FROM students s
+CROSS JOIN subjects sub;
+
+-- Students
+SELECT COUNT(*) FROM students; -- 55
+
+-- Marks
+SELECT COUNT(*) FROM marks; -- 220
+
+-- Attendance
+SELECT COUNT(*) FROM attendance; -- 220
+
+-- Sample marks
+SELECT * FROM marks LIMIT 10;
