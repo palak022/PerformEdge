@@ -50,7 +50,7 @@ Each student has multiple subject records.
 ## 🖼 Dashboard Screenshots
 
 ### 🔹 Teacher Dashboard – Overview
-![Teacher Dashboard Overview](screenshots/teacher_dashboard_overview.png)
+![Teacher Dashboard Overview]([screenshots/teacher_dashboard_overview.png](https://github.com/palak022/PerformEdge/blob/main/Screenshot%202026-01-08%20143642.png))
 
 ---
 
